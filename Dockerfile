@@ -1,24 +1,15 @@
-FROM python:3.11-slim-bullseye
+#FROM rocm/pytorch:rocm6.3_ubuntu22.04_py3.10_pytorch_release_2.4.0
+FROM python:3.10-slim-bullseye
 
-# Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
 
-# Adds GCC and other build tools so we can compile hnswlib and other native/C++ deps.
-RUN apt-get update --fix-missing && apt-get install -y --fix-missing build-essential && \
-  rm -rf /var/lib/apt/lists/*
-
-# Set the working directory in the container.
 WORKDIR /app
 
-# To reduce the image size, replace lilac[all] with lilac[...] optional deps.
-RUN python -m pip install lilac[all]
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac[embeddings,llms,sources,gmail,langsmith,signals,lang_detection,pii,text_stats,gte,bge,nomic,sbert,cohere,openai]"
 
-# Install from the local wheel inside ./dist. This will be a no-op if the wheel is not found.
-COPY --chown=user /dis[t] ./dist/
-RUN python -m pip install --find-links=dist --upgrade lilac[all]
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac[github]"
 
 COPY LICENSE .
 
-# Google cloud does not support -p forwarding, so we pass port 80 as an argument in the config.
-EXPOSE 80
-CMD ["uvicorn", "lilac.server:app", "--host", "0.0.0.0", "--port", "80"]
+EXPOSE 7841
+CMD ["uvicorn", "lilac.server:app", "--host", "127.0.0.1", "--port", "7841"]
