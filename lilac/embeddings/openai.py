@@ -15,7 +15,7 @@ from .embedding import chunked_compute_embedding, identity_chunker
 
 API_NUM_PARALLEL_REQUESTS = 10
 API_OPENAI_BATCH_SIZE = 128
-API_EMBEDDING_MODEL = 'text-embedding-ada-002'
+API_EMBEDDING_MODEL = 'text-embedding-3-large'
 AZURE_NUM_PARALLEL_REQUESTS = 1
 AZURE_OPENAI_BATCH_SIZE = 16
 
