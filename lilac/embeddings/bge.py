@@ -37,8 +37,6 @@ def _get_and_cache_bge_m3(model_name: str) -> 'BGEM3FlagModel':
     'BAAI/bge-m3', use_fp16=True
   )  # Setting use_fp16 to True speeds up computation with a slight performance degradation
 
-  log(f'[{model_name}] Using device:', model.device)
-
   # NOTE: we don't call setup model and device here as this happens internally.
   return model
 
