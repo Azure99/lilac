@@ -23,8 +23,8 @@ from .embedding import chunked_compute_embedding, identity_chunker
 from .transformer_utils import SENTENCE_TRANSFORMER_BATCH_SIZE, setup_model_device
 
 # See https://huggingface.co/spaces/mteb/leaderboard for leaderboard of models.
-GTE_SMALL = 'thenlper/gte-small'
-GTE_BASE = 'thenlper/gte-base'
+GTE_SMALL = 'thenlper/gte-small-zh'
+GTE_BASE = 'thenlper/gte-base-zh'
 GTE_TINY = 'TaylorAI/gte-tiny'
 GTE_CONTEXT_SIZE = 512
 GTE_REMOTE_BATCH_SIZE = 1024 * 16

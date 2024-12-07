@@ -23,7 +23,7 @@ from ..signal import TextEmbeddingSignal
 # See readme in https://huggingface.co/jinaai/jina-embeddings-v2-small-en
 _SIZE_TO_MODEL: dict[str, str] = {
   'small': 'jina-embeddings-v2-small-en',
-  'base': 'jina-embeddings-v2-base-en',
+  'base': 'jina-embeddings-v2-base-zh',
 }
 
 # Anything larger than 1 slows down the computation because a single long document will cause
