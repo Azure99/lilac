@@ -13,8 +13,8 @@ from ..splitters.spacy_splitter import clustering_spacy_chunker
 from ..tasks import TaskExecutionType
 from .embedding import chunked_compute_embedding, identity_chunker
 
-API_NUM_PARALLEL_REQUESTS = 10
-API_OPENAI_BATCH_SIZE = 128
+API_NUM_PARALLEL_REQUESTS = 32
+API_OPENAI_BATCH_SIZE = 16
 API_EMBEDDING_MODEL = 'text-embedding-3-large'
 AZURE_NUM_PARALLEL_REQUESTS = 1
 AZURE_OPENAI_BATCH_SIZE = 16
