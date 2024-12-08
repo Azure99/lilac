@@ -7,13 +7,13 @@ WORKDIR /preinstall
 
 COPY . .
 
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part1]"
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part1]" --no-cache-dir
 
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part2]"
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part2]" --no-cache-dir
 
 WORKDIR /app
 
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac" --no-deps --force-reinstall
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac" --no-deps --force-reinstall --no-cache-dir
 
 COPY LICENSE .
 

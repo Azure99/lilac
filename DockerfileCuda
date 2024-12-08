@@ -1,0 +1,24 @@
+FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
+
+ENV PYTHONUNBUFFERED True
+
+RUN apt-get update --fix-missing && apt-get install -y --fix-missing build-essential python-is-python3 pip && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /preinstall
+
+COPY . .
+
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part1]" --no-cache-dir
+
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part2]" --no-cache-dir
+
+WORKDIR /app
+
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac" --no-deps --force-reinstall --no-cache-dir
+
+COPY LICENSE .
+
+COPY lilac /usr/local/lib/python3.10/dist-packages/lilac
+
+EXPOSE 7841
+CMD ["uvicorn", "lilac.server:app", "--host", "127.0.0.1", "--port", "7841"]
