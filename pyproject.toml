@@ -88,7 +88,7 @@ umap-learn = { version = "^0.5.4", optional = true }
 hdbscan = { version = "^0.8.33", optional = true }
 
 [tool.poetry.extras]
-all = [
+part1 = [
   "cohere",
   "detect-secrets",
   "email-reply-parser",
@@ -99,8 +99,6 @@ all = [
   "hdbscan",
   "langdetect",
   "langsmith",
-  "llama-hub",
-  "llama-index",
   "nomic",
   "openai",
   "presidio_analyzer",
@@ -109,6 +107,11 @@ all = [
   "textacy",
   "transformers",
   "umap-learn",
+]
+
+part2 = [
+  "llama-hub",
+  "llama-index",
 ]
 
 embeddings = ["cohere", "openai", "sentence-transformers"]

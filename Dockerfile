@@ -2,11 +2,18 @@ FROM rocm/pytorch:rocm6.3_ubuntu22.04_py3.10_pytorch_release_2.4.0
 
 ENV PYTHONUNBUFFERED True
 
+
+WORKDIR /preinstall
+
+COPY . .
+
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part1]"
+
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple ".[part2]"
+
 WORKDIR /app
 
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac[embeddings,llms,sources,gmail,langsmith,signals,lang_detection,pii,text_stats,gte,bge,nomic,sbert,cohere,openai]"
-
-RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac[github]"
+RUN python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "lilac" --no-deps --force-reinstall
 
 COPY LICENSE .
 
